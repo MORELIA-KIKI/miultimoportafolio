@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Portafolio</title>
+  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#tareas">Tareas</a></li>
+      </ul>
+      <button id="logout" class="logout-btn">Cerrar sesión</button>
+    </nav>
+  </header>
+
+  <main>
+
+      <section id="inicio">
+    <div class="contenedor">
+      <img class="avatar" src="img/img_perfil.jpeg" alt="Foto de perfil">
+      <h1>Morelia Lazo Huaman</h1>
+      <p>Desarrollador web en formación</p>
+      <div class="redes">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-skype"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fas fa-rss"></i></a>
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="sobre-mi">
+  <h2>Sobre mí</h2>
+  <p><strong>Hola, soy Morelia.</strong> Desarrolladora web en formación, diseñadora de interfaces.</p>
+
+  <div class="contenedor-sobre-mi">
+
+    <div class="datos-personales">
+      <h3>Datos Personales</h3>
+      <ul>
+        <li><strong>Cumpleaños:</strong> 13 - 05 - 2005</li>
+        <li><strong>Teléfono:</strong> +51 912 661254</li>
+        <li><strong>Email:</strong> moreliafatimalazohuaman@gmail.com</li>
+        <li><strong>Dirección:</strong> Jr. santa barbara #448</li>
+
+      </ul>
+    </div>
+
+    <div class="intereses">
+      <h3>Mis Intereses</h3>
+      <div class="iconos">
+        <div><i class="fas fa-gamepad"></i><span>JUEGOS</span></div>
+        <div><i class="fas fa-headphones"></i><span>MÚSICA</span></div>
+        <div><i class="fas fa-plane"></i><span>VIAJAR</span></div>
+        <div><i class="fab fa-apple"></i><span>MAC OS</span></div>
+        <div><i class="fas fa-dumbbell"></i><span>DEPORTE</span></div>
+        <div><i class="fas fa-book"></i><span>LIBROS</span></div>
+        <div><i class="fas fa-car"></i><span>AUTOS</span></div>
+        <div><i class="fas fa-camera"></i><span>FOTOS</span></div>
+      </div>
+    </div>
+  </div><br>
+
+<section id="tareas">
+  <h2>Tareas</h2>
+
+  <form id="task-form">
+    <input type="text" id="task-name" placeholder="Nombre de la tarea (opcional)">
+    <input type="file" id="file-input">
+    <button type="submit">Agregar tarea</button>
+  </form>
+
+  <p id="upload-msg"></p>
+
+  <ul id="task-list"></ul>
+</section><br>
+
+<br><section id="mis-trabajos">
+  <h2>Mis Trabajos</h2>
+  <div class="galeria-trabajos">
+
+    <div class="trabajo">
+      
+      <h3>Tarea 1</h3>
+      <a href="trabajos/ACTIVIDAD_BD_SEMANA 2.pdf" target="_blank" download>Ver trabajo</a>
+    </div>
+
+    <div class="trabajo">
+      
+      <h3>Tarea 2</h3>
+      <a href="trabajos/ACTIVIDAD_BD_SEMANA 3.pdf" target="_blank" download>Ver trabajo</a>
+    </div>
+
+    <div class="trabajo">
+      
+      <h3>Tarea 3</h3>
+      <a href="trabajos/BD_SEMANA 5.docx" target="_blank" download>Descargar</a>
+    </div>
+
+    <div class="trabajo">
+      
+      <h3>Tarea 4</h3>
+      <a href="trabajos/CONSULTAS SOBRE UNA TABLA_semana 7.docx" target="_blank" download>Descargar</a>
+    </div>
+
+    <div class="trabajo">
+      
+      <h3>Tarea 5</h3>
+      <a href="trabajos/MORELIA FATIMA LAZO HUAMAN_BASE DE DATOS_SEMANA 4.docx" target="_blank" download>Descargar</a>
+    </div>
+
+    <div class="trabajo">
+      
+      <h3>Tarea 6</h3>
+      <a href="trabajos/PRACTICA_BASE DE DATOS_SEMANA 9.docx" target="_blank" download>Descargar</a>
+    </div>
+
+    <div class="trabajo">
+      
+      <h3>Tarea 7</h3>
+      <a href="trabajos/CONSULTAS MULTITABLAS_II_III_SEMANA 10.docx" target="_blank" download>Descargar</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
