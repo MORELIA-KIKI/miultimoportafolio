@@ -73,9 +73,9 @@
   <h2>Tareas</h2>
 
   <form id="task-form">
-    <input type="text" id="task-name" placeholder="Nombre de la tarea (opcional)">
-    <input type="file" id="file-input">
-    <button type="submit">Agregar tarea</button>
+    <input type="file" id="archivoInput" accept="application/pdf" />
+    <button onclick="guardarPDF()">Agregar tarea</button>
+    <div id="listaTareas"></div>
   </form>
 
   <p id="upload-msg"></p>
