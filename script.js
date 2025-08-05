@@ -104,3 +104,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function guardarPDF() {
+  const archivoInput = document.getElementById('archivoInput');
+  const archivo = archivoInput.files[0];
+
+  if (!archivo) return;
+
+  const lector = new FileReader();
+  lector.onload = function (e) {
+    const base64 = e.target.result;
+    const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
+
+    tareas.push({
+      nombre: archivo.name,
+      archivoBase64: base64
+    });
+
+    localStorage.setItem("tareas", JSON.stringify(tareas));
+    mostrarTareas();
+  };
+
+  lector.readAsDataURL(archivo); // Lee como Base64
+}
+
+function mostrarTareas() {
+  const lista = document.getElementById("listaTareas");
+  lista.innerHTML = "";
+  const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
+
+  tareas.forEach((tarea, i) => {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      ${tarea.nombre}
+      <a href="${tarea.archivoBase64}" target="_blank">Ver PDF</a>
+    `;
+    lista.appendChild(div);
+  });
+}
+
+mostrarTareas(); // Llamar al cargar la página
+
