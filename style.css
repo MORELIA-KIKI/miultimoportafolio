@@ -361,13 +361,6 @@ body {
 }
 
 /*SECCIÓN HABILIDADES*/
-
-body {
-  background-color: #1e1e1e;
-  font-family: 'Segoe UI', sans-serif;
-  color: #fff;
-  padding: 40px;
-}
 .habilidades {
   max-width: 600px;
   margin: auto;
