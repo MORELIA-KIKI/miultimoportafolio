@@ -754,3 +754,37 @@ body {
   transition: width 1s ease-in-out;
 }
 
+#portfolio {
+  padding: 50px 20px;
+  background-color: #121212; /* Fondo oscuro */
+  color: white;
+  text-align: center;
+}
+
+.titulo-portfolio {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.grid-portfolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.proyecto img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.proyecto img:hover {
+  transform: scale(1.05);
+}
+
+
