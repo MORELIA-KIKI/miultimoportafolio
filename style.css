@@ -361,6 +361,13 @@ body {
 }
 
 /*SECCIÓN HABILIDADES*/
+
+body {
+  background-color: #1e1e1e;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  padding: 40px;
+}
 .habilidades {
   max-width: 600px;
   margin: auto;
@@ -389,7 +396,7 @@ body {
 }
 
 .progreso {
-  background: linear-gradient(90deg, #00e6a8, #00b3e6);
+  background: linear-gradient(90deg, #DAB2FF, #DAB2FF);
   height: 100%;
   border-radius: 25px;
   transition: width 1s ease-in-out;
