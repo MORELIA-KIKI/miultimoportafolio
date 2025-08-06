@@ -172,78 +172,92 @@ header {
   color: #DAB2FF;
 }
 
-/* Sección INICIO */
-#inicio {
-  background-image: url('img/fondo.jpeg'); /* Ruta de tu imagen de fondo */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh; /* Pantalla completa */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  position: relative;
+.inicio{
+    background:  linear-gradient(to top, rgba(30, 35, 38,.10), rgba(30, 35, 38,2));
+    background-image: url(img/fondo.jpeg);
+    background-size: cover;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+ 
+.inicio::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    z-index: 1;
 }
 
-#inicio::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+.inicio .contenido-banner{
+    padding: 20px;
+    background-color: #1e2326;
+    max-width: 350px;
+    margin: auto;
+    text-align: center;
+    border-radius: 40px;
+    position: relative;
+    z-index: 2; 
+    padding: 20px;
+    background-color: #1e2326;
+    max-width: 350px;
+    margin: auto;
+    text-align: center;
+    border-radius: 40px;
 }
 
-.contenedor {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+.inicio .contenido-banner img {
+    margin-top: 20px;
+    border: 3px solid #c39bd3;
+    display: block;
+    width: 200px;         /* Tamaño fijo más pequeño */
+    height: 250px;        /* Altura igual al ancho para que sea cuadrada */
+    margin: auto;
+    border-radius: 0%;    /* Quita la forma redonda */
+    object-fit: cover;    /* Asegura que se recorte bien si no es cuadrada */
 }
 
-.avatar {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 5px solid #00b894; 
-  object-fit: cover;
-  margin-bottom: 20px;
+
+.inicio .contenido-banner h1{
+    margin-top: 40px;
+    font-size: 42px;
+    font-family: 'Poppins';
 }
 
-#inicio h1 {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.inicio .contenido-banner h2{
+    font-size: 15px;
+    font-weight: normal;
 }
 
-#inicio p {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 25px;
+.inicio .contenido-banner .redes {
+    margin-top: 20px;
 }
 
-.redes {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+.inicio .contenido-banner .redes a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0 8px;
+    font-size: 18px;
+    text-align: center;
+    transition: 0.3s;
 }
 
-.redes a {
-  color: white;
-  font-size: 20px;
-  transition: transform 0.3s, color 0.3s;
+.inicio .contenido-banner .redes a:hover {
+    background-color: #c39bd3;
+    color: #fff;
+    border-color: #c39bd3;
 }
-
-.redes a:hover {
-  color: #00b894;
-  transform: scale(1.2);
-}
-
 
 .navbar {
   position: fixed;              
