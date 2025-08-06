@@ -31,116 +31,72 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Dashboard
-  if (path.includes("dashboard.html")) {
-    const user = localStorage.getItem("currentUser");
-    const users = JSON.parse(localStorage.getItem("users") || "{}");
-
-    if (!user || !users[user]) {
-      window.location.href = "index.html";
-      return;
-    }
-
-    const logoutBtn = document.getElementById("logout");
-    logoutBtn?.addEventListener("click", () => {
-      localStorage.removeItem("currentUser");
-      window.location.href = "index.html";
-    });
-
-    const form = document.getElementById("task-form");
-    const taskNameInput = document.getElementById("task-name");
-    const fileInput = document.getElementById("file-input");
-    const taskList = document.getElementById("task-list");
-    const uploadMsg = document.getElementById("upload-msg");
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("formTarea");
+    const nombreInput = document.getElementById("nombreTarea");
+    const archivoInput = document.getElementById("archivoTarea");
+    const mensaje = document.getElementById("mensaje");
+    const lista = document.getElementById("listaTareas");
 
     function mostrarTareas() {
-      const tareas = users[user].tareas || [];
-      taskList.innerHTML = "";
+      const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
+      lista.innerHTML = "<h3>Tareas Guardadas</h3>";
 
-      tareas.forEach(tarea => {
-        const li = document.createElement("li");
+      tareas.forEach((tarea, index) => {
+        const div = document.createElement("div");
+        div.style.border = "1px solid #ccc";
+        div.style.padding = "10px";
+        div.style.marginBottom = "10px";
+
         let contenido = "";
-
-        if (tarea.archivo.startsWith("data:image")) {
-          contenido = `<img src="${tarea.archivo}" alt="Imagen" style="max-width:100px;">`;
-        } else if (tarea.archivo.startsWith("data:application/pdf")) {
-          contenido = `<a href="${tarea.archivo}" target="_blank">📄 Ver PDF</a>`;
+        if (tarea.archivoBase64.startsWith("data:image")) {
+          contenido = `<img src="${tarea.archivoBase64}" alt="Imagen" style="max-width:100px;">`;
+        } else if (tarea.archivoBase64.startsWith("data:application/pdf")) {
+          contenido = `<a href="${tarea.archivoBase64}" target="_blank">📄 Ver PDF</a>`;
         } else {
-          contenido = `<a href="${tarea.archivo}" download>⬇️ Descargar archivo</a>`;
+          contenido = `<a href="${tarea.archivoBase64}" download="${tarea.nombre}">⬇️ Descargar archivo</a>`;
         }
 
-        li.innerHTML = `<strong>${tarea.nombre}</strong><br>${contenido}`;
-        taskList.appendChild(li);
+        div.innerHTML = `<strong>${tarea.nombre}</strong><br>${contenido}`;
+        lista.appendChild(div);
       });
     }
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const nombre = taskNameInput.value.trim() || `Tarea ${users[user].tareas.length + 1}`;
-      const archivo = fileInput.files[0];
+      const nombre = nombreInput.value.trim();
+      const archivo = archivoInput.files[0];
 
       if (!archivo) {
-        uploadMsg.textContent = "⚠️ Debes seleccionar un archivo.";
-        uploadMsg.style.color = "#f55";
+        mensaje.textContent = "⚠️ Debes seleccionar un archivo.";
+        mensaje.style.color = "#f55";
         return;
       }
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        const nuevaTarea = { nombre, archivo: reader.result };
-        users[user].tareas.push(nuevaTarea);
-        localStorage.setItem("users", JSON.stringify(users));
+      const lector = new FileReader();
+      lector.onload = function (e) {
+        const base64 = e.target.result;
+        const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
 
-        uploadMsg.textContent = "✅ Tarea agregada correctamente.";
-        uploadMsg.style.color = "#20c997";
+        tareas.push({
+          nombre: nombre || archivo.name,
+          archivoBase64: base64
+        });
+
+        localStorage.setItem("tareas", JSON.stringify(tareas));
+        mensaje.textContent = "✅ Tarea guardada correctamente.";
+        mensaje.style.color = "#20c997";
         form.reset();
         mostrarTareas();
       };
-      reader.readAsDataURL(archivo);
+
+      lector.readAsDataURL(archivo); // Leer archivo como base64
     });
 
-    mostrarTareas();
-  }
-});
-
-function guardarPDF() {
-  const archivoInput = document.getElementById('archivoInput');
-  const archivo = archivoInput.files[0];
-
-  if (!archivo) return;
-
-  const lector = new FileReader();
-  lector.onload = function (e) {
-    const base64 = e.target.result;
-    const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
-
-    tareas.push({
-      nombre: archivo.name,
-      archivoBase64: base64
-    });
-
-    localStorage.setItem("tareas", JSON.stringify(tareas));
-    mostrarTareas();
-  };
-
-  lector.readAsDataURL(archivo); // Lee como Base64
-}
-
-function mostrarTareas() {
-  const lista = document.getElementById("listaTareas");
-  lista.innerHTML = "";
-  const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
-
-  tareas.forEach((tarea, i) => {
-    const div = document.createElement("div");
-    div.innerHTML = `
-      ${tarea.nombre}
-      <a href="${tarea.archivoBase64}" target="_blank">Ver PDF</a>
-    `;
-    lista.appendChild(div);
+    mostrarTareas(); // Mostrar tareas al cargar
   });
-}
+</script>
 
-mostrarTareas(); // Llamar al cargar la página
 
