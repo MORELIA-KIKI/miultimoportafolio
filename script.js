@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-<script>
+/*Tareas*/
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("formTarea");
     const nombreInput = document.getElementById("nombreTarea");
@@ -97,6 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mostrarTareas(); // Mostrar tareas al cargar
   });
-</script>
+
 
 
