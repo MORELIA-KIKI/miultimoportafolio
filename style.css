@@ -34,7 +34,7 @@ header {
 }
 
 .contenedor-perfil img {
-  border: 5px solid #20c997;
+  border: 5px solid #DAB2FF;
   width: 100%;
   max-width: 500px;
   height: auto;
@@ -169,7 +169,7 @@ header {
 }
 
 .nav-links a:hover {
-  color: #00b894;
+  color: #DAB2FF;
 }
 
 /* Sección INICIO */
@@ -251,7 +251,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;                
-  background-color: #20c997;
+  background-color: #DAB2FF;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
