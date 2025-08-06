@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Mi Portafolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="img" href="img/nav.jpg"> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI PORTAFOLIO</title>
+    <link rel="stylesheet" href="portafolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#sobre-mi">Sobre mí</a></li>
-        <li><a href="#habilidades">Habilidades</a></li>
-        <li><a href="#portfolio">Portafolio</a></li>
-        <li><a href="#tareas">Tareas</a></li>
-      </ul>
-      <button id="logout" class="logout-btn">Cerrar sesión</button>
-    </nav>
-  </header>
+    <!--MENÚ ENCABEZADO-->
+    <div class="contenedor-header">
+        <header>
+            <div class="logo">
+                <a href="#">Morelia Lazo</a>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobremi">Sobre mí</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="nav-responsive">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+    </div>
 
-  <main>
-
+    <!--SECCIÓN INICIO-->
     <section id="inicio" class="inicio">
         <div class="contenido-banner">
             <div class="contenedor-img">
@@ -39,126 +51,137 @@
         </div>
     </section>
 
+    <!--SECCIÓN SOBRE MÍ-->
+    <section id="sobremi" class="sobremi">
+        <div class="contenido-seccion">
+            <h2>Sobre Mí</h2>
+                <p>Hola, soy Morelia Lazo, una apasionada desarrolladora web con experiencia en HTML, CSS y JavaScript. Me
+                encanta crear sitios web atractivos y funcionales que brinden una excelente experiencia de usuario.</p>
 
+                <div class="fila">
+                    <!--datos personales-->
+                    <div class="col">
+                        <h3>Datos personales</h3>
+                        <ul>
+                            <li>
+                                <strong>Cumpleaños</strong>
+                                13 - mayo - 2005
+                            </li>
+                            <li>
+                                <strong>Teléfono</strong>
+                                +51 912661254
+                            </li>
+                            <li>
+                                <strong>Email</strong>
+                                moreliafatimalazohuaman@gmail.com
+                            </li>
+                            <li>
+                                <strong>Dirección</strong>
+                                Jr, Santa Barbara #448, Huancayo, Perú
+                        </ul>
+                    </div>
 
-<section id="sobre-mi" class="sobre-mi">
-  <h2>Sobre mí</h2>
-  <p><strong>Hola, soy Morelia.</strong> Desarrolladora web en formación, diseñadora de interfaces.</p>
+                    <!--Intereses-->
+                    <div class="col">
+                        <h3>Intereses</h3>
+                        <div class="contenedor-intereses">
+                            <div class="interes">
+                                <i class="fa-solid fa-video"></i>
+                                <span>VÍDEOS</span>
+                            </div>
+                            <div class="interes">
+                                <i class="fa-solid fa-camera-retro"></i>
+                                <span>FOTOS</span>
+                            </div>
+                            <div class="interes">
+                                <i class="fa-solid fa-film"></i>
+                                <span>CINE</span>
+                            </div>
+                            <div class="interes">
+                                <i class="fa-brands fa-readme"></i>
+                                <span>LECTURA</span>
+                            </div>
+                            <div class="interes">
+                                <i class="fa-solid fa-pencil"></i>
+                                <span>ESCRITURA</span>
+                            </div>
+                            <div class="interes">
+                                <i class="fa-solid fa-palette"></i>
+                                <span>ARTE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
 
-  <div class="contenedor-sobre-mi">
-
-    <div class="datos-personales">
-      <h3>Datos Personales</h3>
-      <ul>
-        <li><strong>Cumpleaños:</strong> 13 - 05 - 2005</li>
-        <li><strong>Teléfono:</strong> +51 912 661254</li>
-        <li><strong>Email:</strong> moreliafatimalazohuaman@gmail.com</li>
-        <li><strong>Dirección:</strong> Jr. santa barbara #448</li>
-
-      </ul>
-    </div>
-
-    <div class="intereses">
-      <h3>Mis Intereses</h3>
-      <div class="iconos">
-        <div><i class="fa-solid fa-camera"></i><span>FOTOS</span></div>
-        <div><i class="fas fa-headphones"></i><span>MÚSICA</span></div>
-        <div><i class="fas fa-plane"></i><span>VIAJAR</span></div>
-        <div><i class="fas fa-book"></i><span>LIBROS</span></div>
-        <div><i class="fas fa-car"></i><span>AUTOS</span></div>
-        <div><i class="fa-solid fa-umbrella"></i><span>LLUVIA</span></div>
-      </div>
-    </div>
-  </div><br>
- </section> 
-
- <section id="habilidades">
-  <h2>Habilidades</h2>
-  <div class="skills-container">
-    <div class="skill">
-      <h3>HTML5</h3>
-      <div class="progress">
-        <div class="progress-bar" style="width: 90%;">90%</div>
-      </div>
-    </div>
-    <div class="skill">
-      <h3>CSS3</h3>
-      <div class="progress">
-        <div class="progress-bar" style="width: 85%;">85%</div>
-      </div>
-    </div>
-    <div class="skill">
-      <h3>JavaScript</h3>
-      <div class="progress">
-        <div class="progress-bar" style="width: 75%;">75%</div>
-      </div>
-    </div>
-    <div class="skill">
-      <h3>PHP</h3>
-      <div class="progress">
-        <div class="progress-bar" style="width: 70%;">70%</div>
-      </div>
-    </div>
-    <div class="skill">
-      <h3>MySQL</h3>
-      <div class="progress">
-        <div class="progress-bar" style="width: 65%;">65%</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <section id="portfolio">
-  <h2 class="titulo-portfolio">PORTFOLIO</h2>
-  <div class="grid-portfolio">
-    <div class="proyecto">
-      <img src="img/páginas.jpg" alt="Diseño Web">
-    </div>
-    <div class="proyecto">
-      <img src="img/bolantes.jpg" alt="Fotografía">
-    </div>
-    <div class="proyecto">
-      <img src="img/videos.jpg" alt="Diseño Creativo">
-    </div>
-    <!-- Agrega más proyectos si deseas -->
-  </div>
-</section>
-
-
-<section id="tareas">
-  <h2>Tareas</h2>
-
-  <form id="task-form">
-    <input type="file" id="archivoInput" accept="application/pdf" />
-    <button onclick="guardarPDF()">Agregar tarea</button>
-    <div id="listaTareas"></div>
-  </form>
-
-  <p id="upload-msg"></p>
-
-  <ul id="task-list"></ul>
-</section><br>
-
-<br><section id="tareas">
-  <h2 class="titulo-tareas">Mis Tareas</h2>
-  <div class="grid-tareas">
-    <div class="tarjeta-tarea">
-      <p>Tarea 1</p>
-      <a href="tareas/tarea1.pdf" download class="btn-descargar">Descargar</a>
-    </div>
-    <div class="tarjeta-tarea">
-      <p>Tarea 2</p>
-      <a href="tareas/tarea2.pdf" download class="btn-descargar">Descargar</a>
-    </div>
-    <!-- Agrega más tareas -->
-  </div>
-</section>
-
-
-
-
-  </main>
-
-  <script src="script.js"></script>
+    <!--SECCIÓN PORTAFOLIO-->
+    <header>
+        <h1>Portafolio de Morelia Lazo</h1>
+    </header>
+    <section id="portafolio" class="portafolio">
+        <h2>Mis Archivos Publicados</h2>
+        <div class="grid-archivos">
+            <!-- Repite esto 14 veces -->
+            <div class="archivo">
+                <h3>Archivo 1</h3>
+                <a href="archivos/archivo1.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 2</h3>
+                <a href="archivos/archivo2.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 3</h3>
+                <a href="archivos/archivo3.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 4</h3>
+                <a href="archivos/archivo4.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 5</h3>
+                <a href="archivos/archivo5.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 6</h3>
+                <a href="archivos/archivo6.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 7</h3>
+                <a href="archivos/archivo7.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 8</h3>
+                <a href="archivos/archivo8.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 9</h3>
+                <a href="archivos/archivo9.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 10</h3>
+                <a href="archivos/archivo10.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 11</h3>
+                <a href="archivos/archivo11.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 12</h3>
+                <a href="archivos/archivo12.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 13</h3>
+                <a href="archivos/archivo13.pdf" download>Descargar</a>
+            </div>
+            <div class="archivo">
+                <h3>Archivo 14</h3>
+                <a href="archivos/archivo14.pdf" download>Descargar</a>
+            </div>
+        </div>
+    </section>
+    <script src="portafolio.js"></script>
 </body>
+
 </html>
