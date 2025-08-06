@@ -33,71 +33,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /*Tareas*/
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("formTarea");
-    const nombreInput = document.getElementById("nombreTarea");
-    const archivoInput = document.getElementById("archivoTarea");
-    const mensaje = document.getElementById("mensaje");
-    const lista = document.getElementById("listaTareas");
+ document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("formTarea");
+  const nombreInput = document.getElementById("nombreTarea");
+  const archivoInput = document.getElementById("archivoTarea");
+  const mensaje = document.getElementById("mensaje");
+  const lista = document.getElementById("listaTareas");
 
-    function mostrarTareas() {
-      const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
-      lista.innerHTML = "<h3>Tareas Guardadas</h3>";
+  function mostrarTareas() {
+    const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
+    lista.innerHTML = "<h3>Tareas Guardadas</h3>";
 
-      tareas.forEach((tarea, index) => {
-        const div = document.createElement("div");
-        div.style.border = "1px solid #ccc";
-        div.style.padding = "10px";
-        div.style.marginBottom = "10px";
+    tareas.forEach((tarea, index) => {
+      const div = document.createElement("div");
+      div.style.border = "1px solid #ccc";
+      div.style.padding = "10px";
+      div.style.marginBottom = "10px";
 
-        let contenido = "";
-        if (tarea.archivoBase64.startsWith("data:image")) {
-          contenido = `<img src="${tarea.archivoBase64}" alt="Imagen" style="max-width:100px;">`;
-        } else if (tarea.archivoBase64.startsWith("data:application/pdf")) {
-          contenido = `<a href="${tarea.archivoBase64}" target="_blank">📄 Ver PDF</a>`;
-        } else {
-          contenido = `<a href="${tarea.archivoBase64}" download="${tarea.nombre}">⬇️ Descargar archivo</a>`;
-        }
+      const tipoArchivo = tarea.archivoBase64.split(";")[0];
 
-        div.innerHTML = `<strong>${tarea.nombre}</strong><br>${contenido}`;
-        lista.appendChild(div);
-      });
-    }
+      let contenido = "";
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const nombre = nombreInput.value.trim();
-      const archivo = archivoInput.files[0];
-
-      if (!archivo) {
-        mensaje.textContent = "⚠️ Debes seleccionar un archivo.";
-        mensaje.style.color = "#f55";
-        return;
+      if (tipoArchivo.startsWith("data:image")) {
+        contenido = `<img src="${tarea.archivoBase64}" alt="Imagen" style="max-width:100px;">`;
+      } else if (tipoArchivo === "data:application/pdf") {
+        contenido = `<a href="${tarea.archivoBase64}" target="_blank">📄 Ver PDF</a>`;
+      } else {
+        contenido = `
+          <a href="${tarea.archivoBase64}" download="${tarea.nombre}">⬇️ Descargar</a> 
+          <span style="color: gray;">(Vista previa no disponible)</span>
+        `;
       }
 
-      const lector = new FileReader();
-      lector.onload = function (e) {
-        const base64 = e.target.result;
-        const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
-
-        tareas.push({
-          nombre: nombre || archivo.name,
-          archivoBase64: base64
-        });
-
-        localStorage.setItem("tareas", JSON.stringify(tareas));
-        mensaje.textContent = "✅ Tarea guardada correctamente.";
-        mensaje.style.color = "#20c997";
-        form.reset();
-        mostrarTareas();
-      };
-
-      lector.readAsDataURL(archivo); // Leer archivo como base64
+      div.innerHTML = `<strong>${tarea.nombre}</strong><br>${contenido}`;
+      lista.appendChild(div);
     });
+  }
 
-    mostrarTareas(); // Mostrar tareas al cargar
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nombre = nombreInput.value.trim();
+    const archivo = archivoInput.files[0];
+
+    if (!archivo) {
+      mensaje.textContent = "⚠️ Debes seleccionar un archivo.";
+      mensaje.style.color = "#f55";
+      return;
+    }
+
+    const lector = new FileReader();
+    lector.onload = function (e) {
+      const base64 = e.target.result;
+      const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
+
+      tareas.push({
+        nombre: nombre || archivo.name,
+        archivoBase64: base64
+      });
+
+      localStorage.setItem("tareas", JSON.stringify(tareas));
+      mensaje.textContent = "✅ Tarea guardada correctamente.";
+      mensaje.style.color = "#20c997";
+      form.reset();
+      mostrarTareas();
+    };
+
+    lector.readAsDataURL(archivo); // Leer archivo como base64
   });
 
-
-
+  mostrarTareas(); // Mostrar al cargar
+});
