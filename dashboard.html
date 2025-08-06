@@ -182,7 +182,24 @@
             </div>
         </div>
     </section>
-    <script src="portafolio.js"></script>
+
+    <section id="subir-tarea">
+  <h2>Subir Nueva Tarea</h2>
+  <form id="formTarea">
+    <label for="nombreTarea">Nombre de la tarea:</label><br>
+    <input type="text" id="nombreTarea" name="nombreTarea" required><br><br>
+
+    <label for="archivoTarea">Seleccionar archivo:</label><br>
+    <input type="file" id="archivoTarea" name="archivoTarea" accept=".pdf,.doc,.docx,.jpg,.png,.zip" required><br><br>
+
+    <button type="submit">Guardar Tarea</button>
+  </form>
+
+  <div id="tareasGuardadas"></div>
+</section>
+
+    
+    <script src="script.js"></script>
 </body>
 
 </html>
