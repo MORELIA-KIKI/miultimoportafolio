@@ -33,74 +33,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /*Tareas*/
- document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("formTarea");
-  const nombreInput = document.getElementById("nombreTarea");
-  const archivoInput = document.getElementById("archivoTarea");
-  const mensaje = document.getElementById("mensaje");
-  const lista = document.getElementById("listaTareas");
-
-  function mostrarTareas() {
-    const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
-    lista.innerHTML = "<h3>Tareas Guardadas</h3>";
-
-    tareas.forEach((tarea, index) => {
-      const div = document.createElement("div");
-      div.style.border = "1px solid #ccc";
-      div.style.padding = "10px";
-      div.style.marginBottom = "10px";
-
-      const tipoArchivo = tarea.archivoBase64.split(";")[0];
-
-      let contenido = "";
-
-      if (tipoArchivo.startsWith("data:image")) {
-        contenido = `<img src="${tarea.archivoBase64}" alt="Imagen" style="max-width:100px;">`;
-      } else if (tipoArchivo === "data:application/pdf") {
-        contenido = `<a href="${tarea.archivoBase64}" target="_blank">📄 Ver PDF</a>`;
-      } else {
-        contenido = `
-          <a href="${tarea.archivoBase64}" download="${tarea.nombre}">⬇️ Descargar</a> 
-          <span style="color: gray;">(Vista previa no disponible)</span>
-        `;
-      }
-
-      div.innerHTML = `<strong>${tarea.nombre}</strong><br>${contenido}`;
-      lista.appendChild(div);
-    });
-  }
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const nombre = nombreInput.value.trim();
-    const archivo = archivoInput.files[0];
-
-    if (!archivo) {
-      mensaje.textContent = "⚠️ Debes seleccionar un archivo.";
-      mensaje.style.color = "#f55";
-      return;
-    }
-
-    const lector = new FileReader();
-    lector.onload = function (e) {
-      const base64 = e.target.result;
+document.addEventListener("DOMContentLoaded", () => {
+      const contenedor = document.getElementById("contenedorTareas");
       const tareas = JSON.parse(localStorage.getItem("tareas") || "[]");
 
-      tareas.push({
-        nombre: nombre || archivo.name,
-        archivoBase64: base64
+      if (tareas.length === 0) {
+        contenedor.innerHTML = "<p>No hay tareas guardadas.</p>";
+        return;
+      }
+
+      tareas.forEach(tarea => {
+        const div = document.createElement("div");
+        div.classList.add("tarea");
+
+        let contenido = "";
+        const tipo = tarea.archivoBase64.split(";")[0];
+
+        if (tipo.includes("image")) {
+          contenido = `<img src="${tarea.archivoBase64}" alt="Imagen de la tarea">`;
+        } else if (tipo.includes("pdf")) {
+          contenido = `<a href="${tarea.archivoBase64}" target="_blank">📄 Ver PDF</a>`;
+        } else {
+          contenido = `<a href="${tarea.archivoBase64}" download="${tarea.nombre}">⬇️ Descargar archivo</a>`;
+        }
+
+        div.innerHTML = `<strong>${tarea.nombre}</strong><br>${contenido}`;
+        contenedor.appendChild(div);
       });
-
-      localStorage.setItem("tareas", JSON.stringify(tareas));
-      mensaje.textContent = "✅ Tarea guardada correctamente.";
-      mensaje.style.color = "#20c997";
-      form.reset();
-      mostrarTareas();
-    };
-
-    lector.readAsDataURL(archivo); // Leer archivo como base64
-  });
-
-  mostrarTareas(); // Mostrar al cargar
-});
+    });
