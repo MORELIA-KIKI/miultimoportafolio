@@ -777,10 +777,12 @@ body {
 
 .proyecto img {
   width: 100%;
-  height: auto;
+  height: 200px; /* Altura fija para todas las imágenes */
+  object-fit: cover; /* Recorta la imagen sin deformarla */
   border-radius: 8px;
   transition: transform 0.3s ease;
   cursor: pointer;
+
 }
 
 .proyecto img:hover {
