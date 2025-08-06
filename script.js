@@ -1,35 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const path = window.location.pathname;
-
-  // Login y Registro
-  if (path.includes("index.html") || path.endsWith("/")) {
+  // Si existen los elementos de login y registro, ejecutamos
+  if (document.getElementById("btn-register") && document.getElementById("btn-login")) {
     const msg = (text) => (document.getElementById("message").textContent = text);
 
-    document.getElementById("btn-register")?.addEventListener("click", () => {
+    document.getElementById("btn-register").addEventListener("click", () => {
       const u = document.getElementById("reg-user").value.trim();
       const p = document.getElementById("reg-pass").value.trim();
-      if (!u || !p) return msg("Campos obligatorios");
+      if (!u || !p) return msg("⚠️ Todos los campos son obligatorios.");
 
       const users = JSON.parse(localStorage.getItem("users") || "{}");
-      if (users[u]) return msg("Usuario ya registrado");
+      if (users[u]) return msg("⚠️ El usuario ya está registrado.");
 
       users[u] = { pass: p, tareas: [] };
       localStorage.setItem("users", JSON.stringify(users));
-      msg("Registro exitoso");
+      msg("✅ Registro exitoso.");
     });
 
-    document.getElementById("btn-login")?.addEventListener("click", () => {
+    document.getElementById("btn-login").addEventListener("click", () => {
       const u = document.getElementById("log-user").value.trim();
       const p = document.getElementById("log-pass").value.trim();
       const users = JSON.parse(localStorage.getItem("users") || "{}");
+
       if (users[u]?.pass === p) {
         localStorage.setItem("currentUser", u);
         window.location.href = "dashboard.html";
       } else {
-        msg("Credenciales incorrectas");
+        msg("❌ Credenciales incorrectas.");
       }
     });
   }
+});
+
 
 /*Tareas*/
   document.addEventListener("DOMContentLoaded", () => {
