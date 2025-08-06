@@ -360,6 +360,49 @@ body {
     width: 100%;
 }
 
+/*SECCIÓN HABILIDADES*/
+body {
+  background-color: #1e1e1e;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  padding: 40px;
+}
+
+.habilidades {
+  max-width: 600px;
+  margin: auto;
+}
+
+.habilidades h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #00e6a8;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
+.skill span {
+  font-weight: bold;
+}
+
+.barra {
+  background-color: #333;
+  border-radius: 25px;
+  height: 20px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progreso {
+  background: linear-gradient(90deg, #00e6a8, #00b3e6);
+  height: 100%;
+  border-radius: 25px;
+  transition: width 1s ease-in-out;
+}
+
+
 
 /* SECCIÓN PORTAFOLIO */
 
