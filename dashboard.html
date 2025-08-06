@@ -182,24 +182,26 @@
         </div>
     </section>
 
-    <section id="subir-tarea">
+   <section id="subir-tarea">
   <h2>Subir Nueva Tarea</h2>
+
   <form id="formTarea">
     <label for="nombreTarea">Nombre de la tarea:</label><br>
-    <input type="text" id="nombreTarea" name="nombreTarea" required><br><br>
+    <input type="text" id="nombreTarea" name="nombreTarea" placeholder="Ej. Tarea 1" required><br><br>
 
     <label for="archivoTarea">Seleccionar archivo:</label><br>
-    <input type="file" id="archivoTarea" name="archivoTarea" accept=".pdf,.doc,.docx,.jpg,.png,.zip" required><br><br>
+    <input type="file" id="archivoTarea" name="archivoTarea" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip" required><br><br>
 
     <button type="submit">Guardar Tarea</button>
-    <p id="mensaje"></p>
+    <p id="mensaje" style="font-weight: bold; margin-top: 10px;"></p>
   </form>
 
   <div id="listaTareas">
     <h3>Tareas Guardadas</h3>
-    <!-- Aquí se mostrarán las tareas -->
+    <!-- Las tareas aparecerán aquí -->
   </div>
 </section>
+
 
 
     
