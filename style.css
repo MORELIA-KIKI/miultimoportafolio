@@ -75,12 +75,11 @@ header {
 }
 
 .login-container {
-  background-color: #ffffff;
-  padding: 40px 30px;
+  background-color: #fff;
+  padding: 2rem;
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
-  width: 100%;
-  max-width: 400px;
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.2);
+  width: 300px;
   text-align: center;
 }
 
